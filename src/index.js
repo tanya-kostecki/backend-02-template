@@ -8,13 +8,13 @@ const server = http.createServer((request, response) => {
 
     if (params.has("hello")) {
       if (name === "") {
-        response.status = 400;
+        response.statusCode = 400;
         response.statusMessage = "Error";
         response.header = "Content-type: text/plain";
         response.write("Enter a name");
         response.end();
       } else {
-        response.status = 200;
+        response.statusCode = 200;
         response.statusMessage = "OK";
         response.header = "Content-Type: text/plain";
         response.write(`Hello, ${name}`);
@@ -24,7 +24,7 @@ const server = http.createServer((request, response) => {
     }
 
     if (request.url === "/?users") {
-      response.status = 200;
+      response.statusCode = 200;
       response.statusMessage = "OK";
       response.header = "Content-Type: application/json";
       response.write(getUsers());
@@ -34,7 +34,7 @@ const server = http.createServer((request, response) => {
     }
 
     if (request.url === "/") {
-      response.status = 200;
+      response.statusCode = 200;
       response.statusMessage = "OK";
       response.header = "Content-Type: text/plain";
       response.write("Hello, world!");
@@ -43,7 +43,7 @@ const server = http.createServer((request, response) => {
       return;
     }
 
-    response.status = 500;
+    response.statusCode = 500;
     response.statusMessage = 'Server Error'
     response.header = "Content-Type: text/plain";
     response.write('');
